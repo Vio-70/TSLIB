@@ -32,20 +32,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-nothing = ""
-
-def convert_video_to_mp3(input_file, output_file):
-    ffmpeg_cmd = [
-        "ffmpeg"
-        "-i", input_file,
-        output_file
-    ]
-
-    try:
-        subprocess.run(ffmpeg_cmd, check=True)
-        print("Successfully converted")
-    except subprocess.CalledProcessError as e:
-        print("Conversion failed!")
 
 def convert_to_list(var):
     i = 0
@@ -88,7 +74,5 @@ def something(file):
         .output(file_name)
         .run()
     )
-    #convert_video_to_mp3("Media.ts", "video.mp4")
-    Html = '<video width="320" height="240" controls><source src="{file_name}" type="video/mp4"></video>'
     return FileResponse(file_name)
 
